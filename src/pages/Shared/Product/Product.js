@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CurrencyDollarIcon } from '@heroicons/react/outline'
+import { CurrencyDollarIcon, RefreshIcon } from '@heroicons/react/outline'
 
 const Product = props => {
     const { _id, img_url, productName, productInformation, price } = props.product;
+
+    const isLoading = props.isLoading;
+
+    if (isLoading) {
+        return <div className="flex justify-center"><RefreshIcon className="h-20 w-20 text-indigo-600 animate-spin" aria-hidden="true" /></div>
+    }
 
     return (
         <div className="flex">

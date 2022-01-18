@@ -1,4 +1,3 @@
-import { RefreshIcon } from '@heroicons/react/outline';
 import React, { useEffect, useState } from 'react';
 import Header from '../../Shared/Header/Header';
 import Product from '../../Shared/Product/Product';
@@ -16,10 +15,6 @@ const Products = () => {
             })
     }, []);
 
-    if (isLoading) {
-        return <div className="flex justify-center"><RefreshIcon className="h-20 w-20 text-indigo-600 animate-spin" aria-hidden="true" /></div>
-    }
-
     return (
         <div>
             <Header />
@@ -28,6 +23,7 @@ const Products = () => {
                 {
                     products.map(product => <Product
                         key={product._id}
+                        isLoading={isLoading}
                         product={product} />)
                 }
             </div>

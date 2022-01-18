@@ -1,6 +1,7 @@
 import { CurrencyDollarIcon, ExclamationIcon, XIcon } from '@heroicons/react/outline';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../Hooks/useAuth';
+import settingsTools from '../../../images/settings-tools.png';
 
 const MyOrders = () => {
     const { user } = useAuth();
@@ -41,7 +42,7 @@ const MyOrders = () => {
                     myOrders.map(myOrder => <div key={myOrder._id}
                         className="border-2 p-4 rounded-lg">
                         <div className="flex justify-between items-center">
-                            <img className="w-4/12 rounded-full" src={myOrder?.img_url} alt="" />
+                            <img className="w-4/12 rounded-full" src={myOrder?.img_url || settingsTools} alt="" />
                             {
                                 myOrder?.status === 'pending' ?
                                     <p className="bg-red-100 text-red-500 py-2 px-4 rounded-lg">{myOrder?.status}</p>
@@ -50,8 +51,8 @@ const MyOrders = () => {
                             }
                         </div>
                         <div className="text-left my-6">
-                            <h3 className="text-indigo-600 font-bold text-xl">{myOrder?.productName}</h3>
-                            <p className="flex">Price : {myOrder?.price}&nbsp;
+                            <h3 className="text-indigo-600 font-bold text-xl">{myOrder?.productName || myOrder?.serviceName}</h3>
+                            <p className="flex">Price : {myOrder?.price || "Custom Order"}&nbsp;
                                 <CurrencyDollarIcon className="h-6 w-6" aria-hidden="true" />
                             </p>
                             <button onClick={() => handleOrderCancel(myOrder?._id)} className="bg-red-100 text-red-500 py-2 px-4 rounded-lg mt-6">Cancel</button>

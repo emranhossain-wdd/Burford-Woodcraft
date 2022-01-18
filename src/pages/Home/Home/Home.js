@@ -1,4 +1,4 @@
-import { MinusIcon, RefreshIcon } from '@heroicons/react/outline';
+import { MinusIcon } from '@heroicons/react/outline';
 import React, { useEffect, useState } from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
@@ -20,10 +20,6 @@ const Home = () => {
             })
     }, []);
 
-    if (isLoading) {
-        return <div className="flex justify-center"><RefreshIcon className="h-20 w-20 text-indigo-600 animate-spin" aria-hidden="true" /></div>
-    }
-
     return (
         <div>
             <Header />
@@ -38,6 +34,7 @@ const Home = () => {
                 {
                     homeProducts.map(product => <Product
                         key={product._id}
+                        isLoading={isLoading}
                         product={product} />)
                 }
             </div>

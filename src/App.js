@@ -12,6 +12,7 @@ import DashboardDrawer from './pages/Dashboard/DashboardDrawer/DashboardDrawer';
 import Products from './pages/Products/Products/Products';
 import Order from './pages/Products/Order/Order';
 import PrivateRoute from './pages/SignIN/PrivateRoute/PrivateRoute';
+import CustomOrder from './pages/Home/CustomOrder/CustomOrder';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <Route path="/explore">
               <Products />
+            </Route>
+            <Route path="/customOrder">
+              <CustomOrder />
             </Route>
             <PrivateRoute path="/order/:id">
               <Order />
